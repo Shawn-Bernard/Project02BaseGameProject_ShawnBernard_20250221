@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
 
         //Debug.Log($"Spawn {spawnPoint}");
 
-        //player.transform.position = spawnPoint.transform.position;
+        player.transform.position = spawnPoint.transform.position;
         
 
     }

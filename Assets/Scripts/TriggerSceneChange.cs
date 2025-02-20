@@ -11,22 +11,21 @@ public class TriggerSceneChange : MonoBehaviour
 
     [SerializeField] private string nextSpawnName;
 
-    //[SerializeField] private LevelManager levelManager;
+    [SerializeField] private LevelManager levelManager;
 
-    [SerializeField] private GameManager gameManager;
 
 
     private void Start()
     {
         //Need this to get my level manager, so I can use it
-         gameManager.LevelManger = FindObjectOfType<LevelManager>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            gameManager.LevelManger.LoadSceneWithSpawnPoint(nextSceneName, nextSpawnName);
+            levelManager.LoadSceneWithSpawnPoint(nextSceneName, nextSpawnName);
             //Debug.Log($" scene {nextSceneName} spawn {nextSpawnName}");
             
             

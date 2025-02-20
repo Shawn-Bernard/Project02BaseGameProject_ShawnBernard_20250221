@@ -47,30 +47,23 @@ public class GameStateManager : MonoBehaviour
                 gameManager.UImanager.EnableMainMenu();
                 gameManager.LevelManger.LoadSceneWithSpawnPoint("Main_Menu");
                 Time.timeScale = 1;
-                //Cursor.visible = true;
-                // Logic for state here
+                Cursor.visible = true;
 
                 break;
             case GameState.Gameplay_State:
                 Debug.Log("Switch to gameplay");
-                //Cursor.visible = false;
+                gameManager.UImanager.EnableGameplay();
+                Time.timeScale = 1;
+                Cursor.visible = false;
+                //gameManager.LevelManger.LoadSceneWithSpawnPoint("Level_1");
 
-                // Logic for state here
 
                 break;
             case GameState.Paused_State:
                 Debug.Log("Switch to paused");
                 gameManager.UImanager.EnablePause();
                 Time.timeScale = 0;
-
-                // Logic for state here
-                break;
-            case GameState.Start_State:
-                Debug.Log("Switch to start");
-                gameManager.UImanager.EnableGameplay();
-                Time.timeScale = 1;
-                gameManager.LevelManger.LoadSceneWithSpawnPoint("Level_1");
-                // Logic for state here
+                Cursor.visible = true;
                 break;
         }
     }
@@ -81,7 +74,7 @@ public class GameStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HandleStateChange(GameState.Start_State);
+        //HandleStateChange(GameState.MainMenu_State);
         //gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -119,6 +112,7 @@ public class GameStateManager : MonoBehaviour
     public void Gameplay()
     {
         ChangeState(GameState.Gameplay_State);
+        
     }
     public void Pause()
     {
@@ -126,7 +120,8 @@ public class GameStateManager : MonoBehaviour
     }
     public void StartGame()
     {
-
+        gameManager.LevelManger.LoadSceneWithSpawnPoint("Level_1");
+        Gameplay();
     }
     //this method gets my UI manager script methods from game manager
     public void Quit()
