@@ -207,6 +207,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2327763952018552899, guid: 77ceceb93458a244fb982ed8ddd4e8da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576411706244585740, guid: 77ceceb93458a244fb982ed8ddd4e8da, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576411706244585740, guid: 77ceceb93458a244fb982ed8ddd4e8da, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576411706244585740, guid: 77ceceb93458a244fb982ed8ddd4e8da, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576411706244585740, guid: 77ceceb93458a244fb982ed8ddd4e8da, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5137255
+      objectReference: {fileID: 0}
     - target: {fileID: 4621070292477796720, guid: 77ceceb93458a244fb982ed8ddd4e8da, type: 3}
       propertyPath: m_Name
       value: 'EventSystem '

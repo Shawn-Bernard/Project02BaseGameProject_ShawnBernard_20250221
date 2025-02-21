@@ -33,7 +33,12 @@ public class LevelManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //after loading in scene throwing in my spawnPointName
-        SetPlayerSpawnPoint(spawnPointName);
+        if (spawnPointName != null)
+        {
+            // Added this if so I could stop seeing the error when I switch to main menu
+            SetPlayerSpawnPoint(spawnPointName);
+        }
+        
 
         //Unsubbing so I don't loop
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -52,8 +57,16 @@ public class LevelManager : MonoBehaviour
         //Debug.Log($"Player {player}");
 
         //Debug.Log($"Spawn {spawnPoint}");
+        if (spawnPoint == null)
+        {
+            Debug.Log("No spawn point");
+        }
+        else
+        {
+            player.transform.position = spawnPoint.transform.position;
+        }
 
-        player.transform.position = spawnPoint.transform.position;
+        
         
 
     }

@@ -37,8 +37,7 @@ public class GameStateManager : MonoBehaviour
 
         // (Reading only) Holding my new current state after storing my new state in the current state
         currentStateDebug = currentState.ToString();
-    } 
-
+    }
     public void HandleStateChange(GameState state)
     {
         //making a switch case for game states
