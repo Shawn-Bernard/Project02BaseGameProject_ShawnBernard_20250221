@@ -50,7 +50,6 @@ public class GameStateManager : MonoBehaviour
                 gameManager.LevelManger.LoadSceneWithSpawnPoint("Main_Menu");
                 Time.timeScale = 1;
                 Cursor.visible = true;
-
                 break;
             case GameState.Gameplay_State:
                 Debug.Log("Switch to gameplay");
@@ -64,6 +63,8 @@ public class GameStateManager : MonoBehaviour
                 Time.timeScale = 0;
                 Cursor.visible = true;
                 break;
+                // Wasn't to sure if I should enable opitions in the button or not
+                // to me it made sense because I have a return game state that uses the last game state 
             case GameState.Option_State:
                 Debug.Log("Switch to option");
                 gameManager.UImanager.EnableOptions();
@@ -113,6 +114,7 @@ public class GameStateManager : MonoBehaviour
     {
         ChangeState(GameState.Paused_State);
     }
+    //This button would only be called in the menu when start button is pressed
     public void StartGame()
     {
         //This is loading in my new scene for level 1
@@ -120,10 +122,12 @@ public class GameStateManager : MonoBehaviour
         gameManager.LevelManger.LoadSceneWithSpawnPoint("Level_1", "StartPosition");
         ChangeState(GameState.Gameplay_State);
     }
+    // This would button would change my game state to options state
     public void Options()
     {
         ChangeState(GameState.Option_State);
     }
+    //This button would change the game state to the last game state
     public void ReturnState()
     {
         ChangeState(lastState);

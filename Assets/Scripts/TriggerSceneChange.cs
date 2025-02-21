@@ -17,7 +17,7 @@ public class TriggerSceneChange : MonoBehaviour
 
     private void Start()
     {
-        //Need this to get my level manager, so I can use it
+        //Need this to get my game manager, so I can use it
         gameManager = FindObjectOfType<GameManager>();
     }
 

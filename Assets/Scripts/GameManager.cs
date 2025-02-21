@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static GameManager Instance;
-    //Throwing in my UI manager script so I can have access to the methods
+    // Adding my other scripts so I can use game manager to use the methods
     public UIManager UImanager;
     public LevelManager LevelManger;
     public GameStateManager gameStateManager;
