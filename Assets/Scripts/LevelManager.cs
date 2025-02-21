@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
         
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+
     public void LoadSceneWithSpawnPoint(string sceneName)
     {
 

@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -25,5 +24,4 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-
 }

@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameplay;
     [SerializeField] private GameObject pause;
+    [SerializeField] private GameObject options;
     public void EnableMainMenu()
     {
         DisableAllMenus();
@@ -27,6 +28,12 @@ public class UIManager : MonoBehaviour
         pause.SetActive(true);
         Debug.Log("Im pause menu");
     }
+    public void EnableOptions()
+    {
+        DisableAllMenus();
+        options.SetActive(true);
+        Debug.Log("Im options menu");
+    }
     public void QuitGame()
     {
         Application.Quit();
@@ -41,6 +48,7 @@ public class UIManager : MonoBehaviour
         mainMenu.SetActive(false);
         gameplay.SetActive(false);
         pause.SetActive(false);
+        options.SetActive(false);
         
     }
     

@@ -11,7 +11,7 @@ public class GameStateManager : MonoBehaviour
         MainMenu_State, 
         Gameplay_State, 
         Paused_State,
-        Start_State
+        Option_State
     }
     private GameState gameState;
 
@@ -28,6 +28,8 @@ public class GameStateManager : MonoBehaviour
         // (Reading only) Holding my last game state, while converting to string
         lastStateDebug = currentState.ToString();
 
+        // Storing my current state in my last state before changing to new state
+        lastState = currentState;
         // Storing my new state in current state
         currentState = newState;
         // Throwing in my new state
@@ -55,9 +57,6 @@ public class GameStateManager : MonoBehaviour
                 gameManager.UImanager.EnableGameplay();
                 Time.timeScale = 1;
                 Cursor.visible = false;
-                //gameManager.LevelManger.LoadSceneWithSpawnPoint("Level_1");
-
-
                 break;
             case GameState.Paused_State:
                 Debug.Log("Switch to paused");
@@ -65,17 +64,13 @@ public class GameStateManager : MonoBehaviour
                 Time.timeScale = 0;
                 Cursor.visible = true;
                 break;
+            case GameState.Option_State:
+                Debug.Log("Switch to option");
+                gameManager.UImanager.EnableOptions();
+                Time.timeScale = 0;
+                Cursor.visible = true;
+                break;
         }
-    }
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //HandleStateChange(GameState.MainMenu_State);
-        //gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -86,6 +81,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
+                Debug.Log("Esc was pressed");
                 //Making a switch case for the current state s
                 switch (currentState)
                 {
@@ -112,7 +108,6 @@ public class GameStateManager : MonoBehaviour
     public void Gameplay()
     {
         ChangeState(GameState.Gameplay_State);
-        
     }
     public void Pause()
     {
@@ -120,8 +115,18 @@ public class GameStateManager : MonoBehaviour
     }
     public void StartGame()
     {
-        gameManager.LevelManger.LoadSceneWithSpawnPoint("Level_1");
-        Gameplay();
+        //This is loading in my new scene for level 1
+        //Throwing the load scene in gameplay would reload the scene every time
+        gameManager.LevelManger.LoadSceneWithSpawnPoint("Level_1", "StartPosition");
+        ChangeState(GameState.Gameplay_State);
+    }
+    public void Options()
+    {
+        ChangeState(GameState.Option_State);
+    }
+    public void ReturnState()
+    {
+        ChangeState(lastState);
     }
     //this method gets my UI manager script methods from game manager
     public void Quit()
